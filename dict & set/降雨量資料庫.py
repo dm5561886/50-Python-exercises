@@ -9,10 +9,9 @@ def record_rainfall():
         if rainfall == '':
             rainfall = 0
 
-        if city_name in rainfall_data:
-            rainfall_data[city_name] += int(rainfall)
-        else:
-            rainfall_data[city_name] = int(rainfall)
+        # 使用get抓取某城市降雨量，如果無此件就回傳0
+        rainfall_data[city_name] = rainfall_data.get(
+            city_name, 0)+int(rainfall)
 
     for city, rain in rainfall_data.items():
         print(f'{city}: {rain}mm')
